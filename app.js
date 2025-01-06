@@ -10,9 +10,9 @@ const blogRoute = require("./routes/blog");
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
 const app = exp();
-const port = 8000;
+const port = 8000 || process.env.PORT;
 
-mongo.connect("mongodb://localhost:27017/blogify").then(()=>{console.log("mongodb connected");
+mongo.connect(process.env.MONGO_URL).then(()=>{console.log("mongodb connected");
 })
 
 app.set("view engine", "ejs");
